@@ -17,27 +17,18 @@ import sys
 
 def countingValleys(steps, path):
     count = 0
-    count_valley = []
     r=0
     for i in range (len(path)):
         if path[i] == 'U':
             count +=1
-            count_valley.append(count)
+            if count == 0:
+                r+=1
         if path[i] == 'D':
             count -=1
-            count_valley.append(count)
-    
-    j=1        
-    i=j-1
-    k=j+1
-    
-    while (j<len(count_valley)-1):
-        if count_valley[j] == 0 and ((count_valley[i]< 0 and count_valley[k]>0) or                   (count_valley[k]< 0 and count_valley[i]>0) or (count_valley[k]< 0 and                    count_valley[i]<0) or (count_valley[k]> 0 and count_valley[i]>0)):
-            r+=1
             
-        j+=1
-    return r
-            
+   
+    return r        
+                    
         
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
